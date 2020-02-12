@@ -129,7 +129,7 @@ class simulation
 	}
 	ArrayXd measures()
 	{
-		ArrayXd m = ArrayXd::Zero(8); // top, middle, bottom, M, q, diversity, d, h the last 3 are relative things
+		ArrayXd m = ArrayXd::Zero(8); // top, middle, bottom, M, q, diversity, d, h, the last 3 are relative things
 		
 		ArrayXd sum1 = ArrayXd::Zero(N);
 		ArrayXd sum2 = ArrayXd::Zero(N);
@@ -162,7 +162,6 @@ class simulation
 		sum1 /= (0.01*(double)T);
 		sum2 /= (0.01*(double)T);
 
-		m(9) = m(8)/m(4);
 
 		m(0) /= 0.01*(double)N*(double)T;
 		m(1) /= 0.01*(double)N*(double)T;
@@ -186,7 +185,7 @@ class simulation
 
 void fiveplot(int grid, int runs)
 {
-	string filename = "measpV2_" + to_string((int)(10*a)) + "_" + to_string((int)(10*mu)) + ".txt"; //
+	string filename = "measpT_" + to_string((int)(10*a)) + "_" + to_string((int)(T)) + ".txt"; //
 	ofstream file; file.open(filename);
 	for (int g = 0; g <= 4; g++)
 	{
@@ -280,9 +279,9 @@ int main()
 {
 	mu = 0.0;
 	//double sigma = 0.5; //pow(10.0, 3.0);
-	a = 0.5;
+	a = 2.0;
 	N = 200;
-	T = 200000;
+	T = 200; // 200000
 	dt = 0.001;
 	int grid = 20; // for fiveplots
 	int runs = 20;
